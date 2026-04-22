@@ -3,7 +3,7 @@ public class UC {
     static char[][] board = new char[3][3];
 
     /**
-     * Entry point of the program. It initializes the board and prints
+     * Entry point of the program. It initializes the board and printsorigin dev
      * the empty grid on the console.
      */
     public static void main(String[] args) {
