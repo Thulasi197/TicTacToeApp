@@ -1,41 +1,37 @@
-public class UC {
+import java.util.Random;
 
-    static char[][] board = new char[3][3];
+class GameStart {
 
-    /**
-     * Entry point of the program. It initializes the board and printsorigin dev
-     * the empty grid on the console.
-     */
     public static void main(String[] args) {
-        initializeBoard();
-        printBoard();
-    }
 
-    /**
-     * Initializes the 3x3 board by filling each cell with '-'
-     * to indicate an empty position.
-     */
-    static void initializeBoard() {
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 3; col++) {
-                board[row][col] = '-';
-            }
-        }
-    }
+        // Create random object
+        Random rand = new Random();
 
-    /**
-     * Prints the Tic-Tac-Toe board using horizontal and vertical separators
-     * so that the grid structure is clearly visible to the user.
-     */
-    static void printBoard() {
-        System.out.println("-------------");
-        for (int row = 0; row < 3; row++) {
-            System.out.print("| ");
-            for (int col = 0; col < 3; col++) {
-                System.out.print(board[row][col] + " | ");
-            }
-            System.out.println();
-            System.out.println("-------------");
+        // Generate random number (0 or 1)
+        int toss = rand.nextInt(2);
+
+        String player1 = "Player 1";
+        String player2 = "Player 2";
+
+        String currentPlayer;
+        char player1Symbol;
+        char player2Symbol;
+
+        // Conditional logic based on toss
+        if (toss == 0) {
+            currentPlayer = player1;
+            player1Symbol = 'X';
+            player2Symbol = 'O';
+        } else {
+            currentPlayer = player2;
+            player2Symbol = 'X';
+            player1Symbol = 'O';
         }
+
+        // Output results
+        System.out.println("Game Started!");
+        System.out.println("Toss Result: " + currentPlayer + " starts first");
+        System.out.println(player1 + " Symbol: " + player1Symbol);
+        System.out.println(player2 + " Symbol: " + player2Symbol);
     }
 }
