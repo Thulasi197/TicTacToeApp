@@ -16,7 +16,7 @@ public class Main {
 
         while (!gameOver) {
 
-            // Computer makes a move for demo, both players, auto-play
+            // Computer makes a move (for demo, both players auto-play)
             makeRandomMove(currentPlayer);
 
             displayBoard();
@@ -56,7 +56,8 @@ public class Main {
             }
         }
     }
-    // Display
+
+    // Display board
     static void displayBoard() {
         System.out.println();
         for (int i = 0; i < 3; i++) {
@@ -64,9 +65,11 @@ public class Main {
         }
         System.out.println();
     }
+
     // Check win condition
     static boolean checkWin(char s) {
 
+        // Rows, Columns, Diagonals
         return (board[0][0] == s && board[0][1] == s && board[0][2] == s) ||
                (board[1][0] == s && board[1][1] == s && board[1][2] == s) ||
                (board[2][0] == s && board[2][1] == s && board[2][2] == s) ||
@@ -78,6 +81,7 @@ public class Main {
                (board[0][0] == s && board[1][1] == s && board[2][2] == s) ||
                (board[0][2] == s && board[1][1] == s && board[2][0] == s);
     }
+
     // Check draw condition
     static boolean isBoardFull() {
         for (int i = 0; i < 3; i++) {
