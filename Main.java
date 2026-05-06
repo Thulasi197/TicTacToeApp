@@ -1,22 +1,36 @@
-import java.util.Scanner;
-
-class PlayerInput {
-    public int getSlot() {
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter a slot number (1-9): ");
-        int slot = scanner.nextInt();
-        return slot;
+class MoveValidator {
+    public boolean isValidMove(char[][] board, int row, int col) {
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            System.out.println("Invalid position! Row and column must be between 0 and 2.");
+            return false;
+        }
+        if (board[row][col] != ' ') {
+            System.out.println("Cell already occupied! Choose another position.");
+            return false;
+        }
+        return true;
     }
 }
 public class Main {
     public static void main(String[] args) {
 
-        PlayerInput input = new PlayerInput();
+        char[][] board = {
+            {' ', ' ', ' '},
+            {' ', ' ', ' '},
+            {' ', ' ', ' '}
+        };
 
-        int chosenSlot = input.getSlot(); // Method call
+        MoveValidator validator = new MoveValidator();
 
-        System.out.println("You selected slot: " + chosenSlot);
+    
+        int row = 1;
+        int col = 1;
+
+        if (validator.isValidMove(board, row, col)) {
+            System.out.println("Move accepted!");
+            board[row][col] = 'X'; // Place symbol
+        } else {
+            System.out.println("Move rejected!");
+        }
     }
 }
