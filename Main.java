@@ -1,36 +1,30 @@
-class MoveValidator {
-    public boolean isValidMove(char[][] board, int row, int col) {
-        if (row < 0 || row > 2 || col < 0 || col > 2) {
-            System.out.println("Invalid position! Row and column must be between 0 and 2.");
-            return false;
+class BoardUpdater {
+    public void updateBoard(char[][] board, int row, int col, char symbol) {
+        board[row][col] = symbol;
+        System.out.println("Board updated successfully!");
+    }
+    public void displayBoard(char[][] board) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(board[i][j] + " | ");
+            }
+            System.out.println();
         }
-        if (board[row][col] != ' ') {
-            System.out.println("Cell already occupied! Choose another position.");
-            return false;
-        }
-        return true;
     }
 }
 public class Main {
     public static void main(String[] args) {
-
         char[][] board = {
             {' ', ' ', ' '},
             {' ', ' ', ' '},
             {' ', ' ', ' '}
         };
-
-        MoveValidator validator = new MoveValidator();
-
-    
+        BoardUpdater updater = new BoardUpdater();
         int row = 1;
         int col = 1;
+        char symbol = 'X';
+        updater.updateBoard(board, row, col, symbol);
 
-        if (validator.isValidMove(board, row, col)) {
-            System.out.println("Move accepted!");
-            board[row][col] = 'X'; // Place symbol
-        } else {
-            System.out.println("Move rejected!");
-        }
+        updater.displayBoard(board);
     }
 }
