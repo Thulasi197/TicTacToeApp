@@ -1,46 +1,30 @@
-class WinChecker {
-    public boolean checkWin(char[][] board, char symbol) {
+class DrawChecker {
+    public boolean isDraw(char[][] board) {
         for (int i = 0; i < 3; i++) {
-            if (board[i][0] == symbol &&
-                board[i][1] == symbol &&
-                board[i][2] == symbol) {
-                return true;
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] == ' ') {
+                    return false;
+                }
             }
         }
-        for (int j = 0; j < 3; j++) {
-            if (board[0][j] == symbol &&
-                board[1][j] == symbol &&
-                board[2][j] == symbol) {
-                return true;
-            }
-        }
-        if (board[0][0] == symbol &&
-            board[1][1] == symbol &&
-            board[2][2] == symbol) {
-            return true;
-        }
-        if (board[0][2] == symbol &&
-            board[1][1] == symbol &&
-            board[2][0] == symbol) {
-            return true;
-        }
-        return false;
+        return true;
     }
 }
 public class Main {
     public static void main(String[] args) {
 
         char[][] board = {
-            {'X', 'X', 'X'},
-            {'O', ' ', 'O'},
-            {' ', ' ', ' '}
+            {'X', 'O', 'X'},
+            {'X', 'O', 'O'},
+            {'O', 'X', 'X'}
         };
-        WinChecker checker = new WinChecker();
 
-        if (checker.checkWin(board, 'X')) {
-            System.out.println("Player X wins!");
+        DrawChecker checker = new DrawChecker();
+
+        if (checker.isDraw(board)) {
+            System.out.println("Game is a Draw!");
         } else {
-            System.out.println("No winner yet.");
+            System.out.println("Moves still available.");
         }
     }
 }
