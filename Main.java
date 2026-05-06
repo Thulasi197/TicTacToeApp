@@ -1,30 +1,46 @@
-class BoardUpdater {
-    public void updateBoard(char[][] board, int row, int col, char symbol) {
-        board[row][col] = symbol;
-        System.out.println("Board updated successfully!");
-    }
-    public void displayBoard(char[][] board) {
+class WinChecker {
+    public boolean checkWin(char[][] board, char symbol) {
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                System.out.print(board[i][j] + " | ");
+            if (board[i][0] == symbol &&
+                board[i][1] == symbol &&
+                board[i][2] == symbol) {
+                return true;
             }
-            System.out.println();
         }
+        for (int j = 0; j < 3; j++) {
+            if (board[0][j] == symbol &&
+                board[1][j] == symbol &&
+                board[2][j] == symbol) {
+                return true;
+            }
+        }
+        if (board[0][0] == symbol &&
+            board[1][1] == symbol &&
+            board[2][2] == symbol) {
+            return true;
+        }
+        if (board[0][2] == symbol &&
+            board[1][1] == symbol &&
+            board[2][0] == symbol) {
+            return true;
+        }
+        return false;
     }
 }
 public class Main {
     public static void main(String[] args) {
+
         char[][] board = {
-            {' ', ' ', ' '},
-            {' ', ' ', ' '},
+            {'X', 'X', 'X'},
+            {'O', ' ', 'O'},
             {' ', ' ', ' '}
         };
-        BoardUpdater updater = new BoardUpdater();
-        int row = 1;
-        int col = 1;
-        char symbol = 'X';
-        updater.updateBoard(board, row, col, symbol);
+        WinChecker checker = new WinChecker();
 
-        updater.displayBoard(board);
+        if (checker.checkWin(board, 'X')) {
+            System.out.println("Player X wins!");
+        } else {
+            System.out.println("No winner yet.");
+        }
     }
 }
